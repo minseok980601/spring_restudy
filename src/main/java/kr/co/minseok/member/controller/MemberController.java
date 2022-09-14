@@ -47,13 +47,4 @@ public class MemberController {
 		return "join/joinlist";
 	}
 	
-	@RequestMapping(value = "/joinlist")
-	public String joinMemberList( Model model, HttpServletRequest request, 
-			HttpServletResponse response) throws Exception {
-		
-		List<MemberDTO> joinMemberList = memberService.joinMemberList();
-		model.addAttribute("joinMemberList", joinMemberList);
-	
-		return "joinlist";
-	}
 }

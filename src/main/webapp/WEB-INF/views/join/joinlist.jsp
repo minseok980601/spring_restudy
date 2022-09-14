@@ -17,7 +17,7 @@
 			<td>이메일</td>
 			<td>가입일자</td>
 		</tr>
-		<c:forEach var="member" items="${joinMemberList}" begin="0" end="9">
+		<c:forEach var="member" items="${joinList}" begin="0" end="9">
 			<tr>
 				<td>
 					${member.id}
