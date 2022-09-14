@@ -1,5 +1,7 @@
 package kr.co.minseok.member.dao;
 
+import java.util.List;
+
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
@@ -15,5 +17,9 @@ public class MemberDAO {
 	
 	public void insertMember(MemberDTO memberDTO) throws DataAccessException {
 		sqlSession.insert("mapper.member.joinMember", memberDTO);
+	}
+	
+	public List<MemberDTO> selectMember() throws DataAccessException {
+		return sqlSession.selectList("mapper.member.joinMemberList");
 	}
 }

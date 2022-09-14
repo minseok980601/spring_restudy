@@ -1,5 +1,7 @@
 package kr.co.minseok.member.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
 import org.springframework.stereotype.Service;
@@ -15,5 +17,9 @@ public class MemberService {
 	
 	public void addMember(MemberDTO memberDTO) throws DataAccessException {
 		memberDAO.insertMember(memberDTO);
+	}
+	
+	public List<MemberDTO> joinMemberList() throws DataAccessException {
+		return memberDAO.selectMember();
 	}
 }

@@ -1,10 +1,13 @@
 package kr.co.minseok.member.controller;
 
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -29,9 +32,28 @@ public class MemberController {
 	}
 	
 	@PostMapping(value = "/join")
-	public String joinMember(MemberDTO memberDTO, HttpServletRequest request, HttpServletResponse response) throws Exception {
-		request.setCharacterEncoding("UTF-8");
+	public String joinMember(MemberDTO memberDTO, HttpServletRequest request, 
+			HttpServletResponse response) throws Exception {
 		memberService.addMember(memberDTO);
 		return "join/join";
+	}
+	
+	@GetMapping(value = "/joinlist")
+	public String joinLogin(Model model, MemberDTO memberDTO) throws Exception {
+		
+		List<MemberDTO> joinMemberList = memberService.joinMemberList();
+		model.addAttribute("joinList", joinMemberList);
+		
+		return "join/joinlist";
+	}
+	
+	@RequestMapping(value = "/joinlist")
+	public String joinMemberList( Model model, HttpServletRequest request, 
+			HttpServletResponse response) throws Exception {
+		
+		List<MemberDTO> joinMemberList = memberService.joinMemberList();
+		model.addAttribute("joinMemberList", joinMemberList);
+	
+		return "joinlist";
 	}
 }
