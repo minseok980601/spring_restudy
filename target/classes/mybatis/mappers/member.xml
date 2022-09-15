@@ -25,4 +25,12 @@
 			FROM JOIN_MEMBER
 		]]>
 	</select>
+	
+	<select id="loginMember" resultType="memberDTO">
+		<![CDATA[
+			SELECT id, pwd, name
+			FROM JOIN_MEMBER
+			WHERE ID = #{id} AND PWD = #{pwd}
+		]]>
+	</select>
 </mapper>

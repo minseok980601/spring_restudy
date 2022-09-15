@@ -22,4 +22,8 @@ public class MemberDAO {
 	public List<MemberDTO> selectMember() throws DataAccessException {
 		return sqlSession.selectList("mapper.member.joinMemberList");
 	}
+	
+	public void loginMember(MemberDTO memberDTO) throws DataAccessException {
+		sqlSession.selectOne("mapper.member.loginMember", memberDTO);
+	}
 }

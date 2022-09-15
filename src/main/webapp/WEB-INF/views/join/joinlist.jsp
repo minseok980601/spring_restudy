@@ -37,5 +37,6 @@
 			</tr>
 		</c:forEach>
 	</table>
+	<a href="${contextPath}/login">로그인</a>
 </body>
 </html>

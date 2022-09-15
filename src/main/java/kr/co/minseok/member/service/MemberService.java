@@ -22,4 +22,8 @@ public class MemberService {
 	public List<MemberDTO> joinMemberList() throws DataAccessException {
 		return memberDAO.selectMember();
 	}
+	
+	public void loginMember(MemberDTO memberDTO) throws DataAccessException {
+		memberDAO.loginMember(memberDTO);
+	}
 }

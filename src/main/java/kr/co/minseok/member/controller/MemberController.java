@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -45,6 +46,21 @@ public class MemberController {
 		model.addAttribute("joinList", joinMemberList);
 		
 		return "join/joinlist";
+	}
+	
+	@GetMapping(value = "/login")
+	public String memLogin() throws Exception {
+		return "join/login";
+	}
+	
+	@PostMapping(value = "/login")
+	public String memberLogin(HttpServletRequest request, HttpServletResponse response, 
+								HttpSession session, MemberDTO memberDTO) throws Exception {
+		
+		memberService.loginMember(memberDTO);
+		session.setAttribute("loginMember", memberDTO);
+		
+		return "join/homepage";
 	}
 	
 }
