@@ -55,12 +55,14 @@ public class MemberController {
 	
 	@PostMapping(value = "/login")
 	public String memberLogin(HttpServletRequest request, HttpServletResponse response, 
-								HttpSession session, MemberDTO memberDTO) throws Exception {
+								HttpSession session, @ModelAttribute MemberDTO memberDTO) throws Exception {
 		
-		memberService.loginMember(memberDTO);
-		session.setAttribute("loginMember", memberDTO);
+		MemberDTO loginMember = memberService.loginMember(memberDTO, session);
+		session.setAttribute("loginMember", loginMember);
 		
 		return "join/homepage";
 	}
+	
+
 	
 }

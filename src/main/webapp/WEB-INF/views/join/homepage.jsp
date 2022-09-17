@@ -15,5 +15,6 @@
 			<td>이름 : ${loginMember.name }</td>
 		</tr>
 	</table>
+	<a href="${contextPath }/writing?id=${loginMember.id}">글 쓰기</a>
 </body>
 </html>

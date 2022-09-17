@@ -26,9 +26,9 @@
 		]]>
 	</select>
 	
-	<select id="loginMember" resultType="memberDTO">
+	<select id="loginMember" parameterType="memberDTO" resultType="memberDTO">
 		<![CDATA[
-			SELECT id, pwd, name
+			SELECT *
 			FROM JOIN_MEMBER
 			WHERE ID = #{id} AND PWD = #{pwd}
 		]]>

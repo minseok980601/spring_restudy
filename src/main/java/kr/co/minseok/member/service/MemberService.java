@@ -2,6 +2,8 @@ package kr.co.minseok.member.service;
 
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
 import org.springframework.stereotype.Service;
@@ -23,7 +25,7 @@ public class MemberService {
 		return memberDAO.selectMember();
 	}
 	
-	public void loginMember(MemberDTO memberDTO) throws DataAccessException {
-		memberDAO.loginMember(memberDTO);
+	public MemberDTO loginMember(MemberDTO memberDTO, HttpSession session) throws Exception {
+		return memberDAO.loginMember(memberDTO, session);
 	}
 }

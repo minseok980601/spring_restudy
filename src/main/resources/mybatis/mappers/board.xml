@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="mapper.board">
+	<resultMap type="boardDTO" id="bdResult">
+		<result property="post_num" column="post_num"/>
+		<result property="id" column="id"/>
+		<result property="post_title" column="post_title"/>
+		<result property="post_content" column="post_content"/>
+		<result property="post_date" column="post_date"/>
+		<result property="visitcount" column="visitcount"/>
+		<result property="countcomment" column="countcomment"/>
+	</resultMap>
+	
+	<insert id="writeBoard" parameterType="java.util.Map">
+		<![CDATA[
+			INSERT INTO BOARD_WRITE (post_num, id, post_title, post_content)
+			VALUES(#{post_num}, #{id}, #{post_title}, #{post_content})
+		]]>
+	</insert>
+</mapper>
