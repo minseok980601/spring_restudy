@@ -16,5 +16,24 @@
 		</tr>
 	</table>
 	<a href="${contextPath }/writing?id=${loginMember.id}">글 쓰기</a>
+	<a href="${contextPath }/homepage">작성글 보기</a>
+	<table>
+		<tr>
+			<td>번호</td>
+			<td>아이디</td>
+			<td>제목</td>
+			<td>작성일</td>
+			<td>조회수</td>
+		</tr>
+		<c:forEach var="row" items="${list }" begin="0" end="9">
+			<tr>
+				<td>${row.post_num }</td>
+				<td>${row.id }</td>
+				<td>${row.post_title }</td>
+				<td>${row.post_date }</td>
+				<td>${row.visitcount }</td>
+			</tr>
+		</c:forEach>
+	</table>
 </body>
 </html>

@@ -60,8 +60,10 @@ public class MemberController {
 		MemberDTO loginMember = memberService.loginMember(memberDTO, session);
 		session.setAttribute("loginMember", loginMember);
 		
-		return "join/homepage";
+		return "board/homepage";
 	}
+	
+
 	
 
 	

@@ -14,10 +14,19 @@
 		<result property="countcomment" column="countcomment"/>
 	</resultMap>
 	
-	<insert id="writeBoard" parameterType="java.util.Map">
+	<insert id="writeBoard" parameterType="boardDTO">
 		<![CDATA[
 			INSERT INTO BOARD_WRITE (post_num, id, post_title, post_content)
-			VALUES(#{post_num}, #{id}, #{post_title}, #{post_content})
+			VALUES((SELECT NVL(MAX(post_num)+1, 1)FROM BOARD_WRITE),
+			 #{id}, #{post_title}, #{post_content})
 		]]>
 	</insert>
+	
+	<select id="boardList" resultType="boardDTO">
+		<![CDATA[
+			SELECT post_num, id, post_title, post_date, visitcount
+			FROM board_write
+			ORDER BY post_num DESC
+		]]>
+	</select>
 </mapper>

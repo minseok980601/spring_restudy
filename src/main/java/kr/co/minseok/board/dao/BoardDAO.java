@@ -1,5 +1,7 @@
 package kr.co.minseok.board.dao;
 
+import java.util.List;
+
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
@@ -15,5 +17,9 @@ public class BoardDAO {
 
 	public void boardWrite(BoardDTO boardDTO) throws DataAccessException {
 		sqlSession.insert("mapper.board.writeBoard", boardDTO);
+	}
+	
+	public List<BoardDTO> boardList() throws DataAccessException {
+		return sqlSession.selectList("mapper.board.boardList");
 	}
 }

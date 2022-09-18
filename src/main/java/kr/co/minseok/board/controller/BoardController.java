@@ -2,6 +2,7 @@ package kr.co.minseok.board.controller;
 
 import java.util.Enumeration;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
@@ -10,8 +11,10 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
@@ -34,17 +37,20 @@ public class BoardController {
 	}
 	
 	@PostMapping(value = "/writing")
-	@ResponseBody
-	public String boardWrite(MultipartHttpServletRequest mpRequest, HttpServletResponse response) throws Exception {
+	public String boardWrite(HttpServletRequest request, HttpServletResponse response,
+								BoardDTO boardDTO) throws Exception {
 		
-		Map boardMap = new HashMap();
+		boardService.writeBoard(boardDTO);
+		return "board/homepage";
+	}
+	
+	@GetMapping(value = "/homepage")
+	public String hompage(Model model) throws Exception {
 		
-		HttpSession session = mpRequest.getSession();
-		MemberDTO memberDTO = (MemberDTO) session.getAttribute("loginMember");
-		String id = memberDTO.getId();
-		boardMap.put("id", id);
+		List<BoardDTO> list = boardService.boardList();
 		
-		boardService.writeBoard(boardMap);
-		return "join/loginlist";
+		model.addAttribute("list", list);
+		
+		return "board/homepage";
 	}
 }

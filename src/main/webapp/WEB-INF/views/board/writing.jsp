@@ -16,7 +16,7 @@
 </style>
 </head>
 <body>
-<form action="${contextPath }/writing" method="post">
+<form action="${contextPath }/writing?id=${loginMember.id}" method="post">
 	<table>
 		<tr>
 			<td>작성자 : ${loginMember.id }</td>
