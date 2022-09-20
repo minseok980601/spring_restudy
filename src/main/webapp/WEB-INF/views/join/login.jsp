@@ -7,9 +7,27 @@
 <head>
 <meta charset="UTF-8">
 <title>로그인</title>
+<script type="text/javascript">
+	function login() {
+		if(document.login_form.id.value == "") {
+			alert("아이디를 입력해주세요.");
+			document.login_form.id.focus();
+			return false;
+		} else if (document.login_form.pwd.value == "") {
+			alert("비밀번호를 입력해주세요.");
+			document.login_form.pwd.focus();
+			return false;
+		} else {
+			document.login_form.action="${contextPath}/login";
+			document.login_form.method="post";
+			document.login_form.submit();
+		}
+	}
+	
+</script>
 </head>
 <body>
-<form action="${contextPath}/login" method="post">
+<form action="${contextPath}/login" method="post" name="login_form">
 	<table>
 		<tr>
 			<td>아이디</td>
@@ -24,7 +42,7 @@
 			</td>
 		</tr>
 	</table>
-	<input type="submit" value="로그인">
+	<input type="button" onclick="login()" value="로그인">
 </form>
 </body>
 </html>

@@ -15,6 +15,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
@@ -52,5 +53,16 @@ public class BoardController {
 		model.addAttribute("list", list);
 		
 		return "board/homepage";
+	}
+	
+	@GetMapping(value = "readBoard")
+	public String readBoard(Model model, int post_num) throws Exception {
+		
+		List<BoardDTO> list = boardService.readBoard(post_num);
+		
+		model.addAttribute("list", list);
+		
+		return "board/readboard";
+		
 	}
 }

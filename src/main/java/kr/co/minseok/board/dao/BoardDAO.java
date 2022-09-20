@@ -22,4 +22,8 @@ public class BoardDAO {
 	public List<BoardDTO> boardList() throws DataAccessException {
 		return sqlSession.selectList("mapper.board.boardList");
 	}
+	
+	public List<BoardDTO> showBoard(int post_num) throws DataAccessException {
+		return sqlSession.selectList("mapper.board.showBoard", post_num);
+	}
 }

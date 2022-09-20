@@ -22,4 +22,8 @@ public class BoardService {
 	public List<BoardDTO> boardList() throws DataAccessException {
 		return boardDAO.boardList();
 	}
+	
+	public List<BoardDTO> readBoard(int post_num) throws DataAccessException {
+		return boardDAO.showBoard(post_num);
+	}
 }

@@ -29,4 +29,12 @@
 			ORDER BY post_num DESC
 		]]>
 	</select>
+	
+	<select id="showBoard" resultType="boardDTO">
+		<![CDATA[
+			SELECT *
+			FROM board_write
+			WHERE post_num = #{post_num}
+		]]>
+	</select>
 </mapper>

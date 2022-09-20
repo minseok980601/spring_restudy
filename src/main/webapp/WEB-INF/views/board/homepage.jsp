@@ -16,7 +16,6 @@
 		</tr>
 	</table>
 	<a href="${contextPath }/writing?id=${loginMember.id}">글 쓰기</a>
-	<a href="${contextPath }/homepage">작성글 보기</a>
 	<table>
 		<tr>
 			<td>번호</td>
@@ -29,7 +28,7 @@
 			<tr>
 				<td>${row.post_num }</td>
 				<td>${row.id }</td>
-				<td>${row.post_title }</td>
+				<td><a href="${contextPath }/readBoard?post_num=${row.post_num}">${row.post_title }</a></td>
 				<td>${row.post_date }</td>
 				<td>${row.visitcount }</td>
 			</tr>
