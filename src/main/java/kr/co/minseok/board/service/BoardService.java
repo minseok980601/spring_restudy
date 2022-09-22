@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import kr.co.minseok.board.dao.BoardDAO;
 import kr.co.minseok.board.dto.BoardDTO;
+import kr.co.minseok.board.dto.PagingDTO;
 
 @Service("boardService")
 public class BoardService {
@@ -26,4 +27,13 @@ public class BoardService {
 	public List<BoardDTO> readBoard(int post_num) throws DataAccessException {
 		return boardDAO.showBoard(post_num);
 	}
+	
+	public int countBoard(PagingDTO pagingDTO) throws DataAccessException {
+		return boardDAO.countBoard(pagingDTO);
+	}
+	
+	public List<BoardDTO> selectBoard(PagingDTO pagingDTO) throws DataAccessException {
+		return boardDAO.selectBoard(pagingDTO);
+	}
+	
 }

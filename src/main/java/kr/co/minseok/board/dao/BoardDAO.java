@@ -8,6 +8,7 @@ import org.springframework.dao.DataAccessException;
 import org.springframework.stereotype.Repository;
 
 import kr.co.minseok.board.dto.BoardDTO;
+import kr.co.minseok.board.dto.PagingDTO;
 
 @Repository("boardDAO")
 public class BoardDAO {
@@ -25,5 +26,13 @@ public class BoardDAO {
 	
 	public List<BoardDTO> showBoard(int post_num) throws DataAccessException {
 		return sqlSession.selectList("mapper.board.showBoard", post_num);
+	}
+	
+	public int countBoard(PagingDTO pagingDTO) throws DataAccessException {
+		return sqlSession.selectOne("mapper.board.countBoard", pagingDTO);
+	}
+	
+	public List<BoardDTO> selectBoard(PagingDTO pagingDTO) throws DataAccessException {
+		return sqlSession.selectList("mapper.board.selectBoard", pagingDTO);
 	}
 }

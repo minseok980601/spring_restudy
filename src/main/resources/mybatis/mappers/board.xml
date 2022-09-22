@@ -37,4 +37,27 @@
 			WHERE post_num = #{post_num}
 		]]>
 	</select>
+	
+	<!-- 총 게시물 갯수 출력 -->
+	<select id="countBoard" parameterType="kr.co.minseok.board.dto.PagingDTO" resultType="int">
+		<![CDATA[
+		SELECT COUNT(*)
+		FROM board_write
+		]]>
+	</select>
+	
+	<select id="selectBoard" resultType="boardDTO" parameterType="kr.co.minseok.board.dto.PagingDTO">
+		<![CDATA[
+		SELECT *
+		FROM (
+				SELECT ROWNUM RN, A.*
+				FROM (
+						SELECT *
+						FROM BOARD_WRITE 
+						ORDER BY POST_NUM DESC 
+					 ) A
+			 )
+		WHERE RN BETWEEN #{start} AND #{end}
+		]]>
+	</select>
 </mapper>

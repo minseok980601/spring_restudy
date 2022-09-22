@@ -13,6 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -20,6 +21,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import kr.co.minseok.board.dto.BoardDTO;
+import kr.co.minseok.board.dto.PagingDTO;
 import kr.co.minseok.board.service.BoardService;
 import kr.co.minseok.member.dto.MemberDTO;
 
@@ -42,15 +44,41 @@ public class BoardController {
 								BoardDTO boardDTO) throws Exception {
 		
 		boardService.writeBoard(boardDTO);
-		return "board/homepage";
+		return "redirect:/homepage";
 	}
 	
+	/*
+	 * @GetMapping(value = "/homepage") public String hompage(Model model) throws
+	 * Exception {
+	 * 
+	 * List<BoardDTO> list = boardService.boardList();
+	 * 
+	 * model.addAttribute("list", list);
+	 * 
+	 * return "board/homepage"; }
+	 */
+	
 	@GetMapping(value = "/homepage")
-	public String hompage(Model model) throws Exception {
+	public String hompage(Model model, PagingDTO paging,
+						  @RequestParam(value = "nowPage", required = false)String nowPage,
+						  @RequestParam(value = "cntPerPage", required = false)String cntPerPage) throws Exception {
 		
-		List<BoardDTO> list = boardService.boardList();
+		int total = boardService.countBoard(paging);
 		
+		if (nowPage == null && cntPerPage == null) {
+			nowPage = "1";
+			cntPerPage = "5";
+		} else if (nowPage == null) {
+			nowPage = "1";
+		} else if (cntPerPage == null) { 
+			cntPerPage = "5";
+		}
+		
+		paging = new PagingDTO(total, Integer.parseInt(nowPage), Integer.parseInt(cntPerPage));
+		
+		List<BoardDTO> list = boardService.selectBoard(paging);
 		model.addAttribute("list", list);
+		model.addAttribute("paging", paging);
 		
 		return "board/homepage";
 	}

@@ -24,7 +24,7 @@
 			<td>작성일</td>
 			<td>조회수</td>
 		</tr>
-		<c:forEach var="row" items="${list }" begin="0" end="9">
+		<c:forEach var="row" items="${list }" >
 			<tr>
 				<td>${row.post_num }</td>
 				<td>${row.id }</td>
@@ -34,5 +34,23 @@
 			</tr>
 		</c:forEach>
 	</table>
+	<div>
+		<c:if test="${paging.startPage != 1 }">
+			<a href="${contextPath}/homepage?nowPage=${paging.startPage - 1 }&cntPerPage=${paging.cntPerPage}">&lt;</a>
+		</c:if>
+		<c:forEach begin="${paging.startPage }" end="${paging.endPage }" var="p">
+			<c:choose>
+				<c:when test="${p == paging.nowPage }">
+					<b>${p }</b>
+				</c:when>
+				<c:when test="${p != paging.nowPage }">
+					<a href="${contextPath}/homepage?nowPage=${p }&cntPerPage=${paging.cntPerPage}">${p }</a>
+				</c:when>
+			</c:choose>
+		</c:forEach>
+		<c:if test="${paging.endPage != paging.lastPage}">
+			<a href="${contextPath}/homepage?nowPage=${paging.endPage+1 }&cntPerPage=${paging.cntPerPage}">&gt;</a>
+		</c:if>
+	</div>
 </body>
 </html>
