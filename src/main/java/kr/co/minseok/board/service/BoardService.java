@@ -24,8 +24,8 @@ public class BoardService {
 		return boardDAO.boardList();
 	}
 	
-	public List<BoardDTO> readBoard(int post_num) throws DataAccessException {
-		return boardDAO.showBoard(post_num);
+	public List<BoardDTO> readBoard(BoardDTO boardDTO) throws DataAccessException {
+		return boardDAO.showBoard(boardDTO);
 	}
 	
 	public int countBoard(PagingDTO pagingDTO) throws DataAccessException {
@@ -34,6 +34,10 @@ public class BoardService {
 	
 	public List<BoardDTO> selectBoard(PagingDTO pagingDTO) throws DataAccessException {
 		return boardDAO.selectBoard(pagingDTO);
+	}
+	
+	public List<BoardDTO> callingBoard(BoardDTO boardDTO) throws DataAccessException {
+		return boardDAO.callingBoard(boardDTO);
 	}
 	
 }

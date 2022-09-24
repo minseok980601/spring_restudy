@@ -84,13 +84,23 @@ public class BoardController {
 	}
 	
 	@GetMapping(value = "readBoard")
-	public String readBoard(Model model, int post_num) throws Exception {
+	public String readBoard(@ModelAttribute("list") BoardDTO boardDTO, Model model, int post_num) throws Exception {
 		
-		List<BoardDTO> list = boardService.readBoard(post_num);
+		List<BoardDTO> list = boardService.readBoard(boardDTO);
 		
 		model.addAttribute("list", list);
 		
 		return "board/readboard";
 		
+	}
+	
+	@GetMapping(value = "callingBoard")
+	public String callingBoard(Model model, @ModelAttribute("list") BoardDTO boardDTO) throws Exception {
+		
+		List<BoardDTO> list = boardService.callingBoard(boardDTO);
+		
+		model.addAttribute("list", list);
+		
+		return "board/modifyboard";
 	}
 }

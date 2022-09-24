@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>글 보기</title>
+<title>글 수정</title>
 </head>
 <body>
 	<table>
@@ -26,18 +26,7 @@
 					${read.post_content }
 				</td>
 			</tr>
-			<tr>
-				<td>로그인 아이디: ${loginMember.id }</td>
-			</tr>
-			<c:if test="${loginMember.id == read.id}">
-				<tr>
-					<td>
-						<button type="button" onclick="location.href='${contextPath}/callingBoard?post_num=${read.post_num}'">수정하기</button>
-					</td>
-				</tr>
-			</c:if>
 		</c:forEach>
 	</table>
-
 </body>
 </html>

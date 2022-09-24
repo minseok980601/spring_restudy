@@ -60,4 +60,12 @@
 		WHERE RN BETWEEN #{start} AND #{end}
 		]]>
 	</select>
+	
+	<select id="CallingBoard" resultType="boardDTO">
+		<![CDATA[
+			SELECT *
+			FROM BOARD_WRITE
+			WHERE POST_NUM = #{post_num}
+		]]>
+	</select>
 </mapper>
