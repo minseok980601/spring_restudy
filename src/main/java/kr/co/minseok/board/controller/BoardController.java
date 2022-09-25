@@ -11,6 +11,7 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -95,12 +96,22 @@ public class BoardController {
 	}
 	
 	@GetMapping(value = "callingBoard")
-	public String callingBoard(Model model, @ModelAttribute("list") BoardDTO boardDTO) throws Exception {
+	public String callingBoard(Model model, int post_num) throws Exception {
 		
-		List<BoardDTO> list = boardService.callingBoard(boardDTO);
+//		List<BoardDTO> list = boardService.callingBoard(boardDTO);
+		
+		BoardDTO list = boardService.callingBoard(post_num);
 		
 		model.addAttribute("list", list);
 		
 		return "board/modifyboard";
+	}
+	
+	@PostMapping(value = "callingBoard")
+	public String writeBoardUpdate(BoardDTO boardDTO) throws Exception {
+		
+		boardService.writeBoardUpdate(boardDTO);
+		
+		return "redirect:/homepage";
 	}
 }

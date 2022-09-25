@@ -36,7 +36,17 @@ public class BoardDAO {
 		return sqlSession.selectList("mapper.board.selectBoard", pagingDTO);
 	}
 	
-	public List<BoardDTO> callingBoard(BoardDTO boardDTO) throws DataAccessException {
-		return sqlSession.selectList("mapper.board.CallingBoard", boardDTO);
+	/*
+	 * public List<BoardDTO> callingBoard(BoardDTO boardDTO) throws
+	 * DataAccessException { return
+	 * sqlSession.selectList("mapper.board.CallingBoard", boardDTO); }
+	 */
+	
+	public BoardDTO callingBoard(int post_num) throws DataAccessException {
+		return sqlSession.selectOne("mapper.board.CallingBoard", post_num);
+	}
+	
+	public void writeBoardUpdate(BoardDTO boardDTO) throws DataAccessException {
+		sqlSession.update("mapper.board.writeBoardUpdate", boardDTO);
 	}
 }

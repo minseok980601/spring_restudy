@@ -68,4 +68,10 @@
 			WHERE POST_NUM = #{post_num}
 		]]>
 	</select>
+	
+	<update id="writeBoardUpdate" parameterType="boardDTO">
+		UPDATE BOARD_WRITE
+		SET POST_TITLE = #{post_title}, POST_CONTENT = #{post_content} 
+		WHERE POST_NUM = #{post_num}
+	</update>
 </mapper>

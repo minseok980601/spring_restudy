@@ -36,8 +36,16 @@ public class BoardService {
 		return boardDAO.selectBoard(pagingDTO);
 	}
 	
-	public List<BoardDTO> callingBoard(BoardDTO boardDTO) throws DataAccessException {
-		return boardDAO.callingBoard(boardDTO);
+	/*
+	 * public List<BoardDTO> callingBoard(BoardDTO boardDTO) throws
+	 * DataAccessException { return boardDAO.callingBoard(boardDTO); }
+	 */
+	
+	public BoardDTO callingBoard(int post_num) throws DataAccessException {
+		return boardDAO.callingBoard(post_num);
 	}
 	
+	public void writeBoardUpdate(BoardDTO boardDTO) throws DataAccessException {
+		boardDAO.writeBoardUpdate(boardDTO);
+	}
 }
