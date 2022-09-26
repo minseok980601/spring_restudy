@@ -87,7 +87,7 @@ public class BoardController {
 	@GetMapping(value = "readBoard")
 	public String readBoard(@ModelAttribute("list") BoardDTO boardDTO, Model model, int post_num) throws Exception {
 		
-		List<BoardDTO> list = boardService.readBoard(boardDTO);
+		BoardDTO list = boardService.readBoard(boardDTO);
 		
 		model.addAttribute("list", list);
 		
@@ -97,8 +97,6 @@ public class BoardController {
 	
 	@GetMapping(value = "callingBoard")
 	public String callingBoard(Model model, int post_num) throws Exception {
-		
-//		List<BoardDTO> list = boardService.callingBoard(boardDTO);
 		
 		BoardDTO list = boardService.callingBoard(post_num);
 		
@@ -111,6 +109,14 @@ public class BoardController {
 	public String writeBoardUpdate(BoardDTO boardDTO) throws Exception {
 		
 		boardService.writeBoardUpdate(boardDTO);
+		
+		return "redirect:/homepage";
+	}
+	
+	@GetMapping(value = "deleteBoard")
+	public String deleteBoard(int post_num) throws Exception {
+		
+		boardService.deleteBoard(post_num);
 		
 		return "redirect:/homepage";
 	}

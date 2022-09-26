@@ -24,8 +24,8 @@ public class BoardDAO {
 		return sqlSession.selectList("mapper.board.boardList");
 	}
 	
-	public List<BoardDTO> showBoard(BoardDTO boardDTO) throws DataAccessException {
-		return sqlSession.selectList("mapper.board.showBoard", boardDTO);
+	public BoardDTO showBoard(BoardDTO boardDTO) throws DataAccessException {
+		return sqlSession.selectOne("mapper.board.showBoard", boardDTO);
 	}
 	
 	public int countBoard(PagingDTO pagingDTO) throws DataAccessException {
@@ -48,5 +48,9 @@ public class BoardDAO {
 	
 	public void writeBoardUpdate(BoardDTO boardDTO) throws DataAccessException {
 		sqlSession.update("mapper.board.writeBoardUpdate", boardDTO);
+	}
+	
+	public void deleteBoard(int post_num) throws DataAccessException {
+		sqlSession.delete("mapper.board.deleteBoard", post_num);
 	}
 }

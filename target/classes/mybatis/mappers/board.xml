@@ -74,4 +74,9 @@
 		SET POST_TITLE = #{post_title}, POST_CONTENT = #{post_content} 
 		WHERE POST_NUM = #{post_num}
 	</update>
+	
+	<delete id="deleteBoard" parameterType="boardDTO">
+		DELETE FROM BOARD_WRITE
+		WHERE POST_NUM = #{post_num}
+	</delete>
 </mapper>
