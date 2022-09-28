@@ -75,7 +75,7 @@
 		WHERE POST_NUM = #{post_num}
 	</update>
 	
-	<delete id="deleteBoard" parameterType="boardDTO">
+	<delete id="deleteBoard" parameterType="int">
 		DELETE FROM BOARD_WRITE
 		WHERE POST_NUM = #{post_num}
 	</delete>

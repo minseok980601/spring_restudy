@@ -114,7 +114,7 @@ public class BoardController {
 	}
 	
 	@GetMapping(value = "deleteBoard")
-	public String deleteBoard(int post_num) throws Exception {
+	public String deleteBoard(@RequestParam("post_num") int post_num) throws Exception {
 		
 		boardService.deleteBoard(post_num);
 		
