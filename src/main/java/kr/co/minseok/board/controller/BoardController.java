@@ -89,6 +89,8 @@ public class BoardController {
 		
 		BoardDTO list = boardService.readBoard(boardDTO);
 		
+		boardService.upcountBoard(post_num);
+		
 		model.addAttribute("list", list);
 		
 		return "board/readboard";

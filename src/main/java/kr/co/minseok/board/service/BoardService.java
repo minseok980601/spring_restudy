@@ -47,4 +47,8 @@ public class BoardService {
 	public void deleteBoard(int post_num) throws DataAccessException {
 		boardDAO.deleteBoard(post_num);
 	}
+	
+	public void upcountBoard(int post_num) throws DataAccessException {
+		boardDAO.upcountBoard(post_num);
+	}
 }

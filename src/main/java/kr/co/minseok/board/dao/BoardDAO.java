@@ -53,4 +53,8 @@ public class BoardDAO {
 	public void deleteBoard(int post_num) throws DataAccessException {
 		sqlSession.delete("mapper.board.deleteBoard", post_num);
 	}
+	
+	public void upcountBoard(int post_num) throws DataAccessException {
+		sqlSession.update("mapper.board.upcountBoard", post_num);
+	}
 }

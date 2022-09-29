@@ -79,4 +79,10 @@
 		DELETE FROM BOARD_WRITE
 		WHERE POST_NUM = #{post_num}
 	</delete>
+	
+	<update id="upcountBoard" parameterType="int">
+		UPDATE BOARD_WRITE
+		SET VISITCOUNT = VISITCOUNT + 1
+		WHERE POST_NUM = #{post_num}
+	</update>
 </mapper>
