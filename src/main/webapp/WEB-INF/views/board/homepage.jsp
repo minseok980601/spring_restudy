@@ -13,6 +13,11 @@
 		<tr>
 			<td>아이디 : ${loginMember.id }</td>
 			<td>이름 : ${loginMember.name }</td>
+			<c:if test="${loginMember.id != null}">
+				<td>
+					<input type="button" value="마이페이지" onclick="location.href='${contextPath}/mypage'">
+				</td>
+			</c:if>
 		</tr>
 	</table>
 	<a href="${contextPath }/writing?id=${loginMember.id}">글 쓰기</a>
