@@ -15,7 +15,7 @@
 			<td>이름 : ${loginMember.name }</td>
 			<c:if test="${loginMember.id != null}">
 				<td>
-					<input type="button" value="마이페이지" onclick="location.href='${contextPath}/mypage'">
+					<input type="button" value="마이페이지" onclick="location.href='${contextPath}/mypage?id=${loginMember.id }'">
 				</td>
 			</c:if>
 		</tr>

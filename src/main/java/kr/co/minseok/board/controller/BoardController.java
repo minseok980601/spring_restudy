@@ -48,17 +48,6 @@ public class BoardController {
 		return "redirect:/homepage";
 	}
 	
-	/*
-	 * @GetMapping(value = "/homepage") public String hompage(Model model) throws
-	 * Exception {
-	 * 
-	 * List<BoardDTO> list = boardService.boardList();
-	 * 
-	 * model.addAttribute("list", list);
-	 * 
-	 * return "board/homepage"; }
-	 */
-	
 	@GetMapping(value = "/homepage")
 	public String hompage(Model model, PagingDTO paging,
 						  @RequestParam(value = "nowPage", required = false)String nowPage,

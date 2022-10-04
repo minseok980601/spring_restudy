@@ -33,4 +33,12 @@
 			WHERE ID = #{id} AND PWD = #{pwd}
 		]]>
 	</select>
+	
+	<update id="changePwd" parameterType="memberDTO">
+		<![CDATA[
+			UPDATE JOIN_MEMBER 
+			SET PWD = #{pwd}
+			WHERE ID = #{id}
+		]]>
+	</update>
 </mapper>

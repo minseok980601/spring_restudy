@@ -16,11 +16,32 @@
 			document.mypage_info.pass.focus();
 			return false;
 		}
+		
+		if(pass.length < 8) {
+			alert('비밀번호는 8글자 이상, 16글자 이하만 사용 가능합니다.');
+			document.mypage_info.pwd.focus();
+			return false;
+		} else if(pass.length > 16) {
+			alert('비밀번호는 8글자 이상, 16글자 이하만 사용 가능합니다.');
+			document.mypage_info.pwd.focus();
+			return false;
+		}
+		
+		if(document.mypage_info.pwd.value != document.mypage_info.chkPwd.value) {
+			alert("비밀번호를 다시 확인해주세요");
+			document.mypage_info.chkPwd.focus();
+			return false;
+		} else {
+ 			alert("비밀번호변경 완료!");
+			document.mypage_info.action="${contextPath}/changePwd?id=${loginMember.id}";
+			document.mypage_info.method="post";
+			document.mypage_info.submit(); 
+		}
 	}
 </script>
 </head>
 <body>
-<form action="" name="mypage_info">
+<form action="${contextPath}/mypage" method="get" name="mypage_info">
 	<table>
 		<tr>
 			<td>아이디 : ${loginMember.id }</td>
